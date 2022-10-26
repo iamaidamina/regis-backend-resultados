@@ -38,6 +38,11 @@ def getVotingTable(id):
   json=myControllerVotingTable.show(id)
   return jsonify(json)
 
+@app.route("/votingtables/<string:id>",methods=['PATCH'])
+def updateVotingTable(id):
+  data = request.get_json()
+  json=myControllerVotingTable.update(id,data)
+  return jsonify(json)
 
 @app.route("/",methods=['GET'])
 def test():

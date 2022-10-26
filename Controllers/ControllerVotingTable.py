@@ -18,7 +18,7 @@ class ControllerVotingTable():
 
   def update(self,id, infoVotingTable):
     votingTableActual=VotingTable(self.repositoryVotingTable.findById(id))
-    votingTableActual.nid_quantity=infoVotingTable["nid_quantity"]
+    votingTableActual.ndi_quantity=infoVotingTable["ndi_quantity"]
     return self.repositoryVotingTable.save(votingTableActual)
   
   def delete(self,id):
