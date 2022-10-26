@@ -44,6 +44,11 @@ def updateVotingTable(id):
   json=myControllerVotingTable.update(id,data)
   return jsonify(json)
 
+@app.route("/votingtables/<string:id>",methods=['DELETE'])
+def deleteVotingTable(id):
+  json=myControllerVotingTable.delete(id)
+  return jsonify(json)
+
 @app.route("/",methods=['GET'])
 def test():
   json = {}
