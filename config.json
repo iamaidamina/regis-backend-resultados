@@ -1,0 +1,6 @@
+{
+  "url-backend": "127.0.0.1",
+  "port": 9999,
+  "data-db-connection": "mongodb+srv://regis-results-backend:suVSDnNwg18gHZch@cluster0.qtizpuh.mongodb.net/bd-results-microservices?retryWrites=true&w=majority",
+  "name-db": "bd-results-microservices"
+}
