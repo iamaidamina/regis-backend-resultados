@@ -33,6 +33,12 @@ def createVotingTables():
   json=myControllerVotingTable.create(data)
   return jsonify(json)
 
+@app.route("/votingtables/<string:id>",methods=['GET'])
+def getVotingTable(id):
+  json=myControllerVotingTable.show(id)
+  return jsonify(json)
+
+
 @app.route("/",methods=['GET'])
 def test():
   json = {}
