@@ -74,7 +74,7 @@ tlsCAFile=ca)
       x["_id"] = x["_id"].__str__()
       x = self.transformObjectIds(x)
       x = self.getValuesDBRef(x)
-    data.append(x)
+      data.append(x)
     return data
 
   def query(self, theQuery):
