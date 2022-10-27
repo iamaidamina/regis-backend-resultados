@@ -1,4 +1,4 @@
 from Models.AbstractModel import AbstractModel
 
-class VotingTable(AbstractModel):
+class Mesa(AbstractModel):
   pass
