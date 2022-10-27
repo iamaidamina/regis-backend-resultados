@@ -1,4 +1,4 @@
 from Repositories.InterfaceRepository import InterfaceRepository
 from Models.Partido import Partido
-class RepositoryMesa(InterfaceRepository[Partido]):
+class RepositoryPartido(InterfaceRepository[Partido]):
   pass

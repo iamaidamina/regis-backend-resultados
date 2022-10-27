@@ -1,7 +1,7 @@
 from Repositories.RepositoryPartido import RepositoryPartido
 from Models.Partido import Partido
 
-class ControllerMesa():
+class ControllerPartido():
   def __init__(self):
     self.repositoryPoliticalParty = RepositoryPartido()
   
