@@ -19,8 +19,8 @@ print(baseDatos.list_collection_names())
 app=Flask(__name__)
 cors = CORS(app)
 
-from Controllers.ControllerVotingTable import ControllerVotingTable
-myControllerVotingTable = ControllerVotingTable()
+from Controllers.ControllerMesa import ControllerMesa
+myControllerVotingTable = ControllerMesa()
 
 @app.route("/votingtables",methods=['GET'])
 def getVotingTables():
@@ -31,6 +31,22 @@ def getVotingTables():
 def createVotingTables():
   data = request.get_json()
   json=myControllerVotingTable.create(data)
+  return jsonify(json)
+
+@app.route("/votingtables/<string:id>",methods=['GET'])
+def getVotingTable(id):
+  json=myControllerVotingTable.show(id)
+  return jsonify(json)
+
+@app.route("/votingtables/<string:id>",methods=['PATCH'])
+def updateVotingTable(id):
+  data = request.get_json()
+  json=myControllerVotingTable.update(id,data)
+  return jsonify(json)
+
+@app.route("/votingtables/<string:id>",methods=['DELETE'])
+def deleteVotingTable(id):
+  json=myControllerVotingTable.delete(id)
   return jsonify(json)
 
 @app.route("/",methods=['GET'])
