@@ -19,8 +19,8 @@ print(baseDatos.list_collection_names())
 app=Flask(__name__)
 cors = CORS(app)
 
-from Controllers.ControllerMesa import ControllerVotingTable
-myControllerVotingTable = ControllerVotingTable()
+from Controllers.ControllerMesa import ControllerMesa
+myControllerVotingTable = ControllerMesa()
 
 @app.route("/votingtables",methods=['GET'])
 def getVotingTables():
