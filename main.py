@@ -19,6 +19,7 @@ print(baseDatos.list_collection_names())
 app=Flask(__name__)
 cors = CORS(app)
 
+# Voting Table CRUD
 from Controllers.ControllerMesa import ControllerMesa
 myControllerVotingTable = ControllerMesa()
 
@@ -48,6 +49,42 @@ def updateVotingTable(id):
 def deleteVotingTable(id):
   json=myControllerVotingTable.delete(id)
   return jsonify(json)
+
+# Political Party CRUD
+from Controllers.ControllerPartido import ControllerPartido
+myControllerPoliticalParty = ControllerPartido()
+
+@app.route("/politicalparties",methods=['GET'])
+def getPoliticalParties():
+  json=myControllerPoliticalParty.index()
+  return jsonify(json)
+
+@app.route("/politicalparties",methods=['POST'])
+def createPoliticalParty():
+  data = request.get_json()
+  json=myControllerPoliticalParty.create(data)
+  return jsonify(json)
+
+@app.route("/politicalparties/<string:id>",methods=['GET'])
+def getPoliticalParty(id):
+  json=myControllerPoliticalParty.show(id)
+  return jsonify(json)
+
+@app.route("/politicalparties/<string:id>",methods=['PATCH'])
+def updatePoliticalParty(id):
+  data = request.get_json()
+  json=myControllerPoliticalParty.update(id,data)
+  return jsonify(json)
+
+@app.route("/politicalparties/<string:id>",methods=['DELETE'])
+def deletePoliticalParty(id):
+  json=myControllerPoliticalParty.delete(id)
+  return jsonify(json)
+
+
+
+
+
 
 @app.route("/",methods=['GET'])
 def test():
