@@ -81,6 +81,37 @@ def deletePoliticalParty(id):
   json=myControllerPoliticalParty.delete(id)
   return jsonify(json)
 
+# Political Candidate CRUD
+from Controllers.ControllerCandidato import ControllerCandidato
+myControllerCandidate = ControllerCandidato()
+
+@app.route("/politicalcandidates",methods=['GET'])
+def getPoliticalCandidates():
+  json=myControllerCandidate.index()
+  return jsonify(json)
+
+@app.route("/politicalcandidates",methods=['POST'])
+def createPoliticalCandidate():
+  data = request.get_json()
+  json=myControllerCandidate.create(data)
+  return jsonify(json)
+
+@app.route("/politicalcandidates/<string:id>",methods=['GET'])
+def getPoliticalCandidate(id):
+  json=myControllerCandidate.show(id)
+  return jsonify(json)
+
+@app.route("/politicalcandidates/<string:id>",methods=['PATCH'])
+def updatePoliticalCandidate(id):
+  data = request.get_json()
+  json=myControllerCandidate.update(id,data)
+  return jsonify(json)
+
+@app.route("/politicalcandidates/<string:id>",methods=['DELETE'])
+def deletePoliticalCandidate(id):
+  json=myControllerCandidate.delete(id)
+  return jsonify(json)
+
 
 
 
