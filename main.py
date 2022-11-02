@@ -112,7 +112,10 @@ def deletePoliticalCandidate(id):
   json=myControllerCandidate.delete(id)
   return jsonify(json)
 
-
+@app.route("/politicalcandidates/<string:id>/politicalparty/<string:id_departamento>",methods=['PUT'])
+def asignarPartidotoACandidato(id,id_partido):
+  json=myControllerCandidate.asignarPartido(id,id_partido)
+  return jsonify(json)
 
 
 
