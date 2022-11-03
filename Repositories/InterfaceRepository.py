@@ -11,8 +11,7 @@ class InterfaceRepository(Generic[T]):
   def __init__(self):
     ca = certifi.where()
     dataConfig = self.loadFileConfig()
-    client = pymongo.MongoClient(dataConfig["data-db-connection"],
-tlsCAFile=ca)
+    client = pymongo.MongoClient(dataConfig["data-db-connection"],tlsCAFile=ca)
     self.baseDatos = client[dataConfig["name-db"]]
     theClass = get_args(self.__orig_bases__[0])
     self.coleccion = theClass[0].__name__.lower()
@@ -84,7 +83,7 @@ tlsCAFile=ca)
       x["_id"] = x["_id"].__str__()
       x = self.transformObjectIds(x)
       x = self.getValuesDBRef(x)
-    data.append(x)
+      data.append(x)
     return data
 
   def queryAggregation(self, theQuery):
@@ -94,7 +93,7 @@ tlsCAFile=ca)
       x["_id"] = x["_id"].__str__()
       x = self.transformObjectIds(x)
       x = self.getValuesDBRef(x)
-    data.append(x)
+      data.append(x)
     return data
 
   def getValuesDBRef(self, x):
@@ -111,7 +110,7 @@ tlsCAFile=ca)
         x[k] = self.getValuesDBRefFromList(x[k])
       elif isinstance(x[k], dict) :
         x[k] = self.getValuesDBRef(x[k])
-      return x
+    return x
 
   def getValuesDBRefFromList(self, theList):
     newList = []
