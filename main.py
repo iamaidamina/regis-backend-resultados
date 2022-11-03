@@ -117,9 +117,38 @@ def asignarPartidotoACandidato(id,id_partido):
   json=myControllerCandidate.asignarPartido(id,id_partido)
   return jsonify(json)
 
+# Resultado CRUD
+from Controllers.ControllerResultado import ControllerResultado
+myControllerResult = ControllerResultado()
 
+@app.route("/votingresults",methods=['GET'])
+def getResults():
+  json=myControllerResult.index()
+  return jsonify(json)
 
+@app.route("/votingresults/<string:id>",methods=['GET'])
+def getResult(id):
+  json=myControllerResult.show(id)
+  return jsonify(json)
 
+@app.route("/votingresults/votingtables/<string:id_mesa>/politicalcandidates/<string:id_candidato>",methods=['POST'])
+def createResult(id_mesa,id_candidato):
+  data = request.get_json()
+  json=myControllerResult.create(data,id_mesa,id_candidato)
+  return jsonify(json)
+
+@app.route("/votingresults/<string:id_resultado>/votingtables/<string:id_mesa>/politicalcandidates/<string:id_candidato>",methods=['PUT'])
+def updateResult(id_resultado,id_mesa,id_candidato):
+  data = request.get_json()
+  json=myControllerResult.update(id_resultado,data,id_mesa,id_candidato)
+  return jsonify(json)
+
+@app.route("/votingresults/<string:id_resultado>",methods=['DELETE'])
+def deleteResult(id_resultado):
+  json=myControllerResult.delete(id_resultado)
+  return jsonify(json)
+
+#-------------------------------------------------------------------------------------------------------------------------------
 @app.route("/",methods=['GET'])
 def test():
   json = {}
