@@ -131,13 +131,13 @@ def getResult(id):
   json=myControllerResult.show(id)
   return jsonify(json)
 
-@app.route("/votingresults/votingtables/<string:id_mesa>/politicalcandidates/<string:id_candidato>",methods=['POST'])
+@app.route("/votingresults/mesa/<string:id_mesa>/candidato/<string:id_candidato>",methods=['POST'])
 def createResult(id_mesa,id_candidato):
   data = request.get_json()
   json=myControllerResult.create(data,id_mesa,id_candidato)
   return jsonify(json)
 
-@app.route("/votingresults/<string:id_resultado>/votingtables/<string:id_mesa>/politicalcandidates/<string:id_candidato>",methods=['PUT'])
+@app.route("/votingresults/<string:id_resultado>/mesa/<string:id_mesa>/candidato/<string:id_candidato>",methods=['PATCH'])
 def updateResult(id_resultado,id_mesa,id_candidato):
   data = request.get_json()
   json=myControllerResult.update(id_resultado,data,id_mesa,id_candidato)
