@@ -39,7 +39,7 @@ def getVotingTable(id):
   json=myControllerVotingTable.show(id)
   return jsonify(json)
 
-@app.route("/votingtables/<string:id>",methods=['PATCH'])
+@app.route("/votingtables/<string:id>",methods=['PUT'])
 def updateVotingTable(id):
   data = request.get_json()
   json=myControllerVotingTable.update(id,data)
@@ -70,7 +70,7 @@ def getPoliticalParty(id):
   json=myControllerPoliticalParty.show(id)
   return jsonify(json)
 
-@app.route("/politicalparties/<string:id>",methods=['PATCH'])
+@app.route("/politicalparties/<string:id>",methods=['PUT'])
 def updatePoliticalParty(id):
   data = request.get_json()
   json=myControllerPoliticalParty.update(id,data)
@@ -101,7 +101,7 @@ def getPoliticalCandidate(id):
   json=myControllerCandidate.show(id)
   return jsonify(json)
 
-@app.route("/politicalcandidates/<string:id>",methods=['PATCH'])
+@app.route("/politicalcandidates/<string:id>",methods=['PUT'])
 def updatePoliticalCandidate(id):
   data = request.get_json()
   json=myControllerCandidate.update(id,data)
@@ -137,7 +137,7 @@ def createResult(id_mesa,id_candidato):
   json=myControllerResult.create(data,id_mesa,id_candidato)
   return jsonify(json)
 
-@app.route("/votingresults/<string:id_resultado>/mesa/<string:id_mesa>/candidato/<string:id_candidato>",methods=['PATCH'])
+@app.route("/votingresults/<string:id_resultado>/mesa/<string:id_mesa>/candidato/<string:id_candidato>",methods=['PUT'])
 def updateResult(id_resultado,id_mesa,id_candidato):
   data = request.get_json()
   json=myControllerResult.update(id_resultado,data,id_mesa,id_candidato)
